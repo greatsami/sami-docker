@@ -47,7 +47,10 @@ mongoose.connect(URI)
 
 app.get('/', (req, res) => {
     redisClient.set('product', 'products111111')
-    res.send(`<h1>Hello Great SamiMan! ${process.env.NODE_ENV}</h1>`)
+    res.send(`
+        <h1>Hello Great SamiMan! ${process.env.NODE_ENV}</h1>
+        <h2>Push to AWS</h2>
+    `);
 });
 
 app.get('/data', async (req, res) => {
