@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const { Pool, Client } = require('pg');
 const redis = require('redis');
+const os = require('os');
+// const { Pool, Client } = require('pg');
 
 // init app
 const PORT = process.env.PORT || 4000;
@@ -47,15 +48,18 @@ mongoose.connect(URI)
 
 app.get('/', (req, res) => {
     redisClient.set('product', 'products111111')
+    console.log(`Traffic from${os.hostname}`);
     res.send(`
         <h1>Hello Great SamiMan! ${process.env.NODE_ENV}</h1>
         <h2>Push to AWS</h2>
         <h3>Using Doker Hub</h3>
+        <h4>With watchtower</h4>
     `);
 });
 
 app.get('/data', async (req, res) => {
     const product = await redisClient.get('product');
+    console.log(`Traffic from${os.hostname}`);
     res.send(`<h2>${product}</h2>`)
 });
 
