@@ -50,6 +50,7 @@ app.get('/', (req, res) => {
     res.send(`
         <h1>Hello Great SamiMan! ${process.env.NODE_ENV}</h1>
         <h2>Push to AWS</h2>
+        <h3>Using Doker Hub</h3>
     `);
 });
 
